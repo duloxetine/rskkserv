@@ -23,7 +23,11 @@ class GOOGLEDic
     begin
       params = "langpair=ja-Hira|ja&text=" + URI.escape(kana + ',')
       Logger::log(Logger::DEBUG, "params: %s", params)
-      json = Net::HTTP.get @path, "/transliterate?" + params
+      res = Net::HTTP.start(@path, 80) {|http|
+        http.read_timeout = 1
+        http.get("/transliterate?" + params)
+      }
+      json = res.body
       Logger::log(Logger::DEBUG, "json: %s", json)
       tmp = JSON.load(json)
       tmp2 = tmp[0][1]
@@ -35,10 +39,8 @@ class GOOGLEDic
       end
       @cache[kana] = result
     rescue
-      raise if $!.to_s != "fail searching"
       result = []
     end
-    # result.reverse!
     result
   end
 
