@@ -76,6 +76,7 @@ install: all installdirs
 	cd ext; make DESTDIR=$(DESTDIR) install; cd ..
 	$(INSTALL) -m0755 $(SKKSERV) $(DESTDIR)$(sbindir)/$(SKKSERV)
 	if [ ! -f $(DESTDIR)$(sysconfdir)/$(CONFFILE) ]; then \
+		-mkdir -p $(DESTDIR)$(sysconfdir)
 	    $(INSTALL) -m0644 $(CONFFILE) $(DESTDIR)$(sysconfdir)/; \
 	fi
 
