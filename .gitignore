@@ -21,10 +21,10 @@ doc/rskkserv.1.ja_JP.eucJP
 /ext/lib/googledic.rb~
 /ext/.RUBYARCHDIR.-.skkserv.time
 /ext/.RUBYLIBDIR.-.skkserv.time
+/ext/Makefile~
 /rskkserv.conf.in.bak
 /skkserv.rb.in.bak
 /Makefile
-/ext/Makefile
 /INSTALL
 /config.status
 /configure
